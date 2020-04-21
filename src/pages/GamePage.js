@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import GameGrid from "../components/GameGrid/GameGrid";
 import GameTimer from "../components/Timer/GameTimer";
 
-function GamePage() {
+const GamePage = () => {
   let [gameStarted, setGameStarted] = useState(false);
+  let [gameId, setGameId] = useState(getGameId());
 
   let restartGame = () => {
-    setGameStarted(false);
+    setGameId(getGameId());
   };
 
   let gameStartedHandler = () => {
@@ -34,6 +35,7 @@ function GamePage() {
         </div>
 
         <GameGrid
+          gameId={getGameId}
           gameStarted={gameStarted}
           gameStartedHandler={gameStartedHandler}
           gridSize="25"
@@ -42,6 +44,10 @@ function GamePage() {
       </div>
     </div>
   );
-}
+};
+
+const getGameId = () => {
+  return new Date().getTime() + "_" + Math.random();
+};
 
 export default GamePage;
