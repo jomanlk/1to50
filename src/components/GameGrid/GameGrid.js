@@ -14,10 +14,11 @@ function GameGrid(props) {
     });
   }
 
-  console.log("Rendering game grid 2");
   return (
     <GameGridSquare
+      gameId={props.gameId}
       gameStartedHandler={props.gameStartedHandler}
+      gameRestarted={props.gameRestarted}
       gameStarted={props.gameStarted}
       pendingBlocks={blocks.slice(gridSize)}
       expectedValue={1}

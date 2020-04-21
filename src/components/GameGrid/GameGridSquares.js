@@ -5,6 +5,12 @@ import _ from "lodash";
 let blocks = [];
 
 function GameGridSquares(props) {
+  const resetGrid = () => {
+    visibleBlocks = props.visibleBlocks;
+    pendingBlocks = props.pendingBlocks;
+    expectedValue = 1;
+  };
+
   let gridSize = props.gridSize;
   let maxCount = props.maxCount;
 
@@ -13,8 +19,7 @@ function GameGridSquares(props) {
   let [visibleBlocks, setVisibleBlocks] = useState(props.visibleBlocks);
 
   if (props.gameStarted === false) {
-    visibleBlocks = props.visibleBlocks;
-    pendingBlocks = props.pendingBlocks;
+    resetGrid();
   }
 
   visibleBlocks = visibleBlocks.map((block) => {
@@ -43,7 +48,12 @@ function GameGridSquares(props) {
   );
 }
 
-function squareClickHandler(props) {
+/**
+ * Handles the button clicks
+ * @param {*} props
+ */
+const squareClickHandler = (props) => {
+  //Game starts when you click 1
   if (props.blockValue === 1) {
     props.gameStartedHandler();
   }
@@ -75,6 +85,6 @@ function squareClickHandler(props) {
   if (props.maxCount === props.expectedValue) {
     alert("You've won!");
   }
-}
+};
 
 export default GameGridSquares;

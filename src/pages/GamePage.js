@@ -5,15 +5,18 @@ import GameTimer from "../components/Timer/GameTimer";
 const GamePage = () => {
   let [gameStarted, setGameStarted] = useState(false);
   let [gameId, setGameId] = useState(getGameId());
+  let [gameRestarted, setGameRestarted] = useState(getGameId());
 
   let restartGame = () => {
     if (gameStarted) {
+      setGameRestarted(true);
       setGameStarted(false);
     }
     setGameId(getGameId());
   };
 
   let gameStartedHandler = () => {
+    setGameRestarted(false);
     setGameStarted(true);
   };
 
@@ -38,8 +41,9 @@ const GamePage = () => {
         </div>
 
         <GameGrid
-          gameId={getGameId}
+          gameId={gameId}
           gameStarted={gameStarted}
+          gameRestarted={gameRestarted}
           gameStartedHandler={gameStartedHandler}
           gridSize="25"
           maxCount="50"
