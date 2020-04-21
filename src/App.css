@@ -3,6 +3,11 @@ body {
   padding-top: 5rem;
 }
 
+.narrow-wrap {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
 .App {
   text-align: center;
 }
@@ -42,17 +47,25 @@ body {
   }
 }
 
+.btn {
+  border-radius: 0.5rem;
+}
+
+.big-button {
+  font-size: 2rem;
+}
+
 .game-page {
 }
 
 .game-grid {
   margin: 0 auto;
-  max-width: 540px;
   height: 540px;
   font-size: 0;
   background: #c5d86d;
   padding: 0.2rem;
   text-align: center;
+  border-radius: 0.5rem;
 }
 
 .grid-square {
@@ -62,6 +75,7 @@ body {
   height: 100px;
   display: inline-block;
   margin: 0.2rem;
+  border-radius: 0.5rem;
 }
 
 .grid-square.alt-color {
@@ -71,6 +85,28 @@ body {
 .grid-square.flash-animate {
   -webkit-animation: flash linear 0.5s 1;
   animation: flash linear 0.5s 1;
+}
+
+.grid-square a {
+  display: block;
+  font-size: 24px;
+  line-height: 100px;
+  height: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+
+.game-timer {
+  background-color: #2e294e;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  float: right;
+}
+
+@media (min-width: 768px) {
 }
 
 @-webkit-keyframes flash {
@@ -94,16 +130,4 @@ body {
   100% {
     opacity: 1;
   }
-}
-
-.grid-square a {
-  display: block;
-  font-size: 24px;
-  line-height: 100px;
-  height: 100%;
-  color: #fff;
-  text-decoration: none;
-}
-
-@media (min-width: 768px) {
 }

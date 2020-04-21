@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GridSquare from "../GridSquare/GridSquare";
+import GridSquare from "./GridSquare";
 import _ from "lodash";
 
 let blocks = [];
@@ -12,6 +12,11 @@ function GameGridSquares(props) {
   let [pendingBlocks, setPendingBlocks] = useState(props.pendingBlocks);
   let [visibleBlocks, setVisibleBlocks] = useState(props.visibleBlocks);
 
+  if (props.gameStarted === false) {
+    visibleBlocks = props.visibleBlocks;
+    pendingBlocks = props.pendingBlocks;
+  }
+
   visibleBlocks = visibleBlocks.map((block) => {
     block.clickHandler = (blockValue) => {
       squareClickHandler({
@@ -23,25 +28,32 @@ function GameGridSquares(props) {
         setVisibleBlocks: setVisibleBlocks,
         setPendingBlocks: setPendingBlocks,
         setExpectedValue: setExpectedValue,
+        gameStartedHandler: props.gameStartedHandler,
       });
     };
     return block;
   });
 
   return (
-    <div className="game-grid col-12">
-      {visibleBlocks.map((block) => new GridSquare(block))}
+    <div className="row narrow-wrap">
+      <div className="game-grid col-12">
+        {visibleBlocks.map((block) => new GridSquare(block))}
+      </div>
     </div>
   );
 }
 
 function squareClickHandler(props) {
-  if (props.expectedValue != props.blockValue) {
+  if (props.blockValue === 1) {
+    props.gameStartedHandler();
+  }
+
+  if (props.expectedValue !== props.blockValue) {
     return;
   }
 
   let blockIndex = _.findIndex(props.visibleBlocks, (block) => {
-    return block.value == props.blockValue;
+    return block.value === props.blockValue;
   });
 
   //reset the old values
@@ -60,7 +72,7 @@ function squareClickHandler(props) {
   props.setPendingBlocks(props.pendingBlocks);
   props.setExpectedValue(props.expectedValue + 1);
 
-  if (props.maxCount == props.expectedValue) {
+  if (props.maxCount === props.expectedValue) {
     alert("You've won!");
   }
 }
