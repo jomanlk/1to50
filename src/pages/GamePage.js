@@ -7,6 +7,9 @@ const GamePage = () => {
   let [gameId, setGameId] = useState(getGameId());
 
   let restartGame = () => {
+    if (gameStarted) {
+      setGameStarted(false);
+    }
     setGameId(getGameId());
   };
 
