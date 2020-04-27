@@ -8,6 +8,10 @@ function GameGrid(props) {
   let gridSize = props.gridSize;
   let maxCount = props.maxCount;
 
+  if (props.gameStarted === false || props.gameRestarted === true) {
+    blocks = [];
+  }
+
   for (let i = 0; i < maxCount; i++) {
     blocks.push({
       value: i + 1,

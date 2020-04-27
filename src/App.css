@@ -23,6 +23,10 @@ body {
   }
 }
 
+.modal.show {
+  display: block;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,6 +40,11 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.subtle-text {
+  color: #aaa;
+  font-size: 1rem;
 }
 
 @keyframes App-logo-spin {
@@ -60,22 +69,26 @@ body {
 
 .game-grid {
   margin: 0 auto;
-  height: 540px;
   font-size: 0;
   background: #c5d86d;
   padding: 0.2rem;
   text-align: center;
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid-square {
   background-color: #1b998b;
   color: #fff;
-  width: 100px;
-  height: 100px;
-  display: inline-block;
+  display: flex;
+  flex: 1 1;
   margin: 0.2rem;
   border-radius: 0.5rem;
+  overflow: hidden;
+  padding-top: calc(20% - 0.5rem);
+  height: 0;
+  position: relative;
 }
 
 .grid-square.alt-color {
@@ -88,25 +101,55 @@ body {
 }
 
 .grid-square a {
-  display: block;
-  font-size: 24px;
-  line-height: 100px;
-  height: 100%;
+  font-size: 22px;
+  line-height: 50px;
+  background: #1b998b;
+  border-radius: 8px;
+  margin: 0.25rem;
+  height: calc(100% - 0.5rem);
+  width: calc(100% - 0.5rem);
+  position: absolute;
+  top: 0;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+}
+
+.grid-square a:hover {
+  background-color: #0c969e;
+}
+
+.grid-square a span {
 }
 
 .game-timer {
   background-color: #2e294e;
   border-radius: 0.5rem;
-  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
   color: #fff;
   width: 120px;
   text-align: center;
   float: right;
+  min-height: 48px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
+  .game-grid-wrap {
+    margin: 0 -15px;
+  }
+
+  .game-grid {
+  }
+
+  .grid-square {
+  }
+
+  .grid-square a {
+  }
 }
 
 @-webkit-keyframes flash {
