@@ -67,11 +67,16 @@ body {
 }
 
 .btn {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .big-button {
   font-size: 2rem;
+}
+
+.alert-light {
+  background: #1b998b;
+  color: #fff;
 }
 
 .btn-game-start {
@@ -95,7 +100,7 @@ body {
   background: #c5d86d;
   padding: 0.2rem;
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +111,7 @@ body {
   display: flex;
   flex: 1 1;
   margin: 0.2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   overflow: hidden;
   padding-top: calc(20% - 0.5rem);
   height: 0;
@@ -126,7 +131,7 @@ body {
   font-size: 22px;
   line-height: 50px;
   background: #1b998b;
-  border-radius: 8px;
+  border-radius: 0.25rem;
   margin: 0.25rem;
   height: calc(100% - 0.5rem);
   width: calc(100% - 0.5rem);
@@ -148,7 +153,7 @@ body {
 
 .game-timer {
   background-color: #ee4848;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;

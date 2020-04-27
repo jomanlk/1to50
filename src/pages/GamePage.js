@@ -42,6 +42,10 @@ const GamePage = () => {
     <div className="row game-page">
       <div className="col-12">
         <div className="narrow-wrap">
+          <div className="alert alert-light col-12" role="alert">
+            <strong>How to play?</strong> Click the numbers in order from 1 to
+            50 in the shortest possible time.
+          </div>
           <div className="row mb-3">
             <div className="col-6 ">
               <button
