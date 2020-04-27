@@ -47,7 +47,7 @@ const GamePage = () => {
               <button
                 onClick={restartGame}
                 type="button"
-                className="btn btn-danger btn-lg"
+                className="btn btn-lg btn-game-start"
               >
                 Reset
               </button>

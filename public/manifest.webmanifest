@@ -1,0 +1,22 @@
+{
+  "short_name": "1to50",
+  "name": "1to50 Game",
+  "description": "Click from 1 to 50. That's pretty much it.",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#ee4848",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ee4848"
+}
