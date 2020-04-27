@@ -3,6 +3,16 @@ body {
   padding-top: 5rem;
 }
 
+.navbar {
+  background-color: #ee4848;
+  display: block;
+  text-align: center;
+}
+
+.navbar img {
+  width: 48px;
+}
+
 .narrow-wrap {
   max-width: 540px;
   margin: 0 auto;
@@ -62,6 +72,18 @@ body {
 
 .big-button {
   font-size: 2rem;
+}
+
+.btn-game-start {
+  background-color: #2e294e;
+  border: 1px solid #2e294e;
+  color: #fff;
+}
+
+.btn-game-start:hover,
+.btn-game-start:active {
+  color: #eee;
+  background-color: #2e294e;
 }
 
 .game-page {
@@ -125,7 +147,7 @@ body {
 }
 
 .game-timer {
-  background-color: #2e294e;
+  background-color: #ee4848;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
