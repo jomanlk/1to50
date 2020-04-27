@@ -11,7 +11,7 @@ function GridSquare(props) {
   return (
     <div className={className} key={props.value + Math.random()}>
       <a onClick={() => props.clickHandler(props.value)} href="#">
-        {props.value}
+        <span>{props.value}</span>
       </a>
     </div>
   );

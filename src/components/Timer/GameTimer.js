@@ -9,8 +9,12 @@ function GameTimer(props) {
       setTimer(0);
     }
 
-    if (props.gameStarted === true) {
-      setTimeout(() => setTimer(timer + 100), 10);
+    if (props.gameStarted === true && !props.timerPaused) {
+      setTimeout(() => {
+        let time = timer + 100;
+        setTimer(time);
+        props.onTimerUpdate(time);
+      }, 10);
     }
   });
 
@@ -18,7 +22,7 @@ function GameTimer(props) {
   timeInSecs = timeInSecs % 1 == 0 ? `${timeInSecs}.0` : timeInSecs;
   return (
     <div className="game-timer">
-      <div className="timer p-2">{timeInSecs}</div>
+      <div className="timer">{timeInSecs}</div>
     </div>
   );
 }

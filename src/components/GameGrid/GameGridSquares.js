@@ -5,6 +5,12 @@ import _ from "lodash";
 let blocks = [];
 
 function GameGridSquares(props) {
+  const resetGrid = () => {
+    visibleBlocks = props.visibleBlocks;
+    pendingBlocks = props.pendingBlocks;
+    expectedValue = 1;
+  };
+
   let gridSize = props.gridSize;
   let maxCount = props.maxCount;
 
@@ -13,8 +19,7 @@ function GameGridSquares(props) {
   let [visibleBlocks, setVisibleBlocks] = useState(props.visibleBlocks);
 
   if (props.gameStarted === false) {
-    visibleBlocks = props.visibleBlocks;
-    pendingBlocks = props.pendingBlocks;
+    resetGrid();
   }
 
   visibleBlocks = visibleBlocks.map((block) => {
@@ -29,21 +34,37 @@ function GameGridSquares(props) {
         setPendingBlocks: setPendingBlocks,
         setExpectedValue: setExpectedValue,
         gameStartedHandler: props.gameStartedHandler,
+        gameWonHandler: props.gameWonHandler,
       });
     };
     return block;
   });
 
+  let blockRows = _.chunk(visibleBlocks, 5);
+
   return (
-    <div className="row narrow-wrap">
+    <div className="narrow-wrap game-grid-wrap">
       <div className="game-grid col-12">
-        {visibleBlocks.map((block) => new GridSquare(block))}
+        {blockRows.map((row) => getchunkedBlockRow(row))}
       </div>
     </div>
   );
 }
 
-function squareClickHandler(props) {
+const getchunkedBlockRow = (row) => {
+  return (
+    <div key={Math.random()} className="row m-0">
+      {row.map((block) => new GridSquare(block))}
+    </div>
+  );
+};
+
+/**
+ * Handles the button clicks
+ * @param {*} props
+ */
+const squareClickHandler = (props) => {
+  //Game starts when you click 1
   if (props.blockValue === 1) {
     props.gameStartedHandler();
   }
@@ -68,13 +89,15 @@ function squareClickHandler(props) {
   props.visibleBlocks[blockIndex].oldValue = props.blockValue;
   props.visibleBlocks[blockIndex].altColor = true;
 
+  //if the win condition is met, set it and ttrigger redraw
+  if (props.maxCount === props.expectedValue) {
+    props.gameWonHandler();
+  }
+
+  //Update the state and trigger the redraw
   props.setVisibleBlocks(props.visibleBlocks);
   props.setPendingBlocks(props.pendingBlocks);
   props.setExpectedValue(props.expectedValue + 1);
-
-  if (props.maxCount === props.expectedValue) {
-    alert("You've won!");
-  }
-}
+};
 
 export default GameGridSquares;
