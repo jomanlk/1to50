@@ -164,18 +164,30 @@ body {
   min-height: 48px;
 }
 
+.high-score-list {
+  margin: 0;
+  padding: 0;
+}
+
+.high-score-list li {
+  list-style: none;
+}
+
+.high-score-list li .name {
+}
+
+.high-score-list li .score {
+}
+
+.high-score-list li .date {
+  display: block;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
 @media (max-width: 767px) {
   .game-grid-wrap {
     margin: 0 -15px;
-  }
-
-  .game-grid {
-  }
-
-  .grid-square {
-  }
-
-  .grid-square a {
   }
 }
 

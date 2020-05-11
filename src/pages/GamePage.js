@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import GameGrid from "../components/GameGrid/GameGrid";
 import GameTimer from "../components/Timer/GameTimer";
+import Modal from "../components/Modal/Modal";
 import GameWon from "../components/GameAlerts/GameWon";
+import HighScores from "../components/HighScores/HighScores";
 
 let gameWonTime = 0;
 
@@ -10,6 +12,7 @@ const GamePage = () => {
   let [gameId, setGameId] = useState(getGameId());
   let [gameRestarted, setGameRestarted] = useState(getGameId());
   let [gameWon, setGameWon] = useState(false);
+  let [showHighScore, setShowHighScore] = useState(false);
   let [showGameWon, setShowGameWon] = useState(false);
 
   let restartGame = () => {
@@ -77,12 +80,28 @@ const GamePage = () => {
           maxCount={50}
         />
 
+        <div className="col-12 text-center mt-3">
+          <button
+            type="button"
+            className="btn btn-info"
+            onClick={() => setShowHighScore(true)}
+          >
+            Show High Scores
+          </button>
+        </div>
+
         {showGameWon && (
-          <GameWon
-            gameWonTime={gameWonTime}
+          <Modal
+            title="Congratulations!"
             show={true}
             onClose={() => setShowGameWon(false)}
-          />
+          >
+            <GameWon gameWonTime={gameWonTime} />
+          </Modal>
+        )}
+
+        {showHighScore && (
+          <HighScores show={true} onClose={() => setShowHighScore(false)} />
         )}
       </div>
     </div>
